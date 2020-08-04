@@ -147,6 +147,12 @@
     max-width: 100%;
   }
 
+  #page-teacher-list main {
+    max-width: 740px;
+    margin: 0 auto;
+    padding: 3.2rem 0;
+  }
+
   #search-teachers {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -157,5 +163,32 @@
 
   #search-teachers .input-block + .input-block {
     margin-top: 0;
+  }
+
+  .teacher-item header,
+  .teacher-item footer {
+    padding: 3.2rem;
+  }
+
+  .teacher-item > p {
+    padding: 0 3.2rem;
+  }
+
+  .teacher-item footer p strong {
+    display: initial;
+
+    margin-left: 1.6rem;
+  }
+
+  .teacher-item footer button {
+    justify-content: center;
+    
+    width: 24.5rem;
+
+    font-size: 1.6rem;
+  }
+
+  .teacher-item footer button img {
+    margin-right: 1.6rem;
   }
 }
