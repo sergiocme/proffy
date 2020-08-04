@@ -32,7 +32,7 @@ function TeacherItem() {
         </p>
         <button type="button">
           <img src={whatsappIcon} alt="WhatsApp" />
-          Entrar em contato
+          Chamar
         </button>
       </footer>
     </article>
