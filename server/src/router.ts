@@ -9,7 +9,7 @@ interface ScheduleItem {
   to: string;
 }
 
-function parseFieldTime(time: string) {
+function parseTime(time: string) {
   const [hour, minutes] = time.split(':').map(Number);
   return (hour * 60) + minutes;
 }
@@ -45,8 +45,8 @@ router.post('/leassons', async (request, response) => {
       return {
         leasson_id: leassonId,
         week_day,
-        from: parseFieldTime(from),
-        to: parseFieldTime(to),
+        from: parseTime(from),
+        to: parseTime(to),
       };
     });
 
