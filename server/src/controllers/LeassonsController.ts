@@ -13,6 +13,35 @@ interface ScheduleItem {
 }
 
 class LeassonsController {
+  async index(request: Request, response: Response) {
+    const { query } = request;
+
+    if (!query.week_day || !query.subject || !query.time) {
+      return response.status(400).json({
+        error: 'Missing filters to search leassons',
+      });
+    }
+
+    const week_day = Number(query.week_day);
+    const subject = String(query.subject);
+    const parsedTime = parseTime(String(query.time));
+
+    const leassons = await database('leassons')
+      .whereExists((that) => {
+        that.select('schedules.*')
+          .from('schedules')
+          .whereRaw('`schedules`.`leasson_id` = `leassons`.`id`')
+          .whereRaw('`schedules`.`week_day` = ??', [week_day])
+          .whereRaw('`schedules`.`from` <= ??', [parsedTime])
+          .whereRaw('`schedules`.`to` > ??', [parsedTime])
+      })
+      .where('leassons.subject', '=', subject)
+      .join('users', 'leassons.user_id', '=', 'users.id')
+      .select(['leassons.*', 'users.*']);
+
+    return response.json(leassons);
+  }
+
   async create(request: Request, response: Response) {
     const {
       name,
