@@ -25,7 +25,7 @@
   border: 0;
 }
 
-#page-teacher-form main fieldset + field {
+#page-teacher-form main fieldset + fieldset {
   margin-top: 6.4rem;
 }
 
