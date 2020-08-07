@@ -127,6 +127,16 @@
     padding: 0 6.4rem;
   }
 
+  #page-teacher-form main fieldset .schedule-item {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    column-gap: 1.6rem;
+  }
+
+  #page-teacher-form main fieldset .schedule-item .input-block {
+    margin-top: 0 !important;
+  }
+
   #page-teacher-form main footer {
     display: flex;
     flex-direction: row;
