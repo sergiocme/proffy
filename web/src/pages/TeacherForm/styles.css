@@ -43,6 +43,10 @@
   color: var(--color-text-title);
 }
 
+#page-teacher-form main fieldset .input-block + .textarea-block {
+  margin-top: 2.4rem;
+}
+
 #page-teacher-form main label {
   color: var(--color-text-complement);
 }
