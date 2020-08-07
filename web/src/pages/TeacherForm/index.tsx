@@ -58,19 +58,16 @@ function TeacherForm() {
 
           <div className="schedule-item">
             <Select
-              name="subject"
-              label="Matéria"
+              name="week_day"
+              label="Dia da semana"
               options={[
-                { value: 'Artes', label: 'Artes' },
-                { value: 'Biologia', label: 'Biologia' },
-                { value: 'Ciências', label: 'Ciências' },
-                { value: 'Educação Física', label: 'Educação Física' },
-                { value: 'Física', label: 'Física' },
-                { value: 'Geografia', label: 'Geografia' },
-                { value: 'História', label: 'História' },
-                { value: 'Matemática', label: 'Matemática' },
-                { value: 'Português', label: 'Português' },
-                { value: 'Química', label: 'Química' },
+                { value: '1', label: 'Domingo' },
+                { value: '2', label: 'Segunda' },
+                { value: '3', label: 'Terça' },
+                { value: '4', label: 'Quarta' },
+                { value: '5', label: 'Quinta' },
+                { value: '6', label: 'Sexta' },
+                { value: '7', label: 'Sabado' },
               ]}
             />
 
