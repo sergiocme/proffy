@@ -25,7 +25,7 @@ const TeacherItem: React.FC<TeacherItemProps> = ({teacher}) => {
   // Functions
   const handleNewConnection = useCallback(() => {
     api.post('/connections', { user_id: teacher.id });
-  }, []);
+  }, [teacher]);
 
   return (
     <article className="teacher-item">
