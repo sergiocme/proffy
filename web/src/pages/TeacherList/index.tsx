@@ -1,5 +1,8 @@
-import React from 'react';
+import React, { useState, useCallback } from 'react';
 import './styles.css';
+
+// Services
+import api from '../../services/api';
 
 // Components
 import PageHeader from '../../components/PageHeader';
@@ -8,6 +11,26 @@ import Input from '../../components/Input';
 import TeacherItem from '../../components/TeacherItem';
 
 function TeacherList() {
+  // State
+  const [subject, setSubject] = useState('');
+  const [weekDay, setWeekDay] = useState('');
+  const [time, setTime] = useState('');
+
+  const [teachers, setTeachers] = useState([]);
+
+  // Functions
+  const handleSearchTeachers = useCallback(() => {
+    api.get('/leassons', {
+      params: {
+        subject,
+        week_day: weekDay,
+        time,
+      },
+    }).then(({data}) => {
+      setTeachers(data);
+    });
+  }, [subject, weekDay, time]);
+
   return (
     <div id="page-teacher-list" className="container">
       <PageHeader title="Estes são os proffys disponíveis.">
@@ -15,6 +38,8 @@ function TeacherList() {
           <Select
             name="subject"
             label="Matéria"
+            value={subject}
+            onChange={(e) => setSubject(e.target.value)}
             options={[
               { value: 'Artes', label: 'Artes' },
               { value: 'Biologia', label: 'Biologia' },
@@ -32,6 +57,8 @@ function TeacherList() {
           <Select
             name="week_day"
             label="Dia da semana"
+            value={weekDay}
+            onChange={(e) => setWeekDay(e.target.value)}
             options={[
               { value: '1', label: 'Domingo' },
               { value: '2', label: 'Segunda' },
@@ -43,12 +70,20 @@ function TeacherList() {
             ]}
           />
 
-          <Input name="hour" label="Hora" />
+          <Input
+            name="hour"
+            label="Hora"
+            type="time"
+            value={time}
+            onChange={(e) => setTime(e.target.value)}
+          />
+
+          <button type="button" onClick={handleSearchTeachers}>Buscar</button>
         </form>
       </PageHeader>
 
       <main>
-        <TeacherItem />
+        {teachers.map((teacher) => <TeacherItem />)}
       </main>
     </div>
   );
