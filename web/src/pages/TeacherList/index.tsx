@@ -10,13 +10,23 @@ import Select from '../../components/Select';
 import Input from '../../components/Input';
 import TeacherItem from '../../components/TeacherItem';
 
+interface Teacher {
+  id: number;
+  name: string;
+  avatar: string;
+  whatsapp: string;
+  bio: string;
+  subject: string;
+  cost: string;
+}
+
 function TeacherList() {
   // State
   const [subject, setSubject] = useState('');
   const [weekDay, setWeekDay] = useState('');
   const [time, setTime] = useState('');
 
-  const [teachers, setTeachers] = useState([]);
+  const [teachers, setTeachers] = useState<Teacher[]>([]);
 
   // Functions
   const handleSearchTeachers = useCallback(() => {
@@ -83,7 +93,7 @@ function TeacherList() {
       </PageHeader>
 
       <main>
-        {teachers.map((teacher) => <TeacherItem />)}
+        {teachers.map((teacher) => <TeacherItem key={teacher.id} teacher={teacher} />)}
       </main>
     </div>
   );
