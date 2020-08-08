@@ -68,7 +68,7 @@
   color: var(--color-primary);
 }
 
-.teacher-item footer button {
+.teacher-item footer a {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -82,12 +82,13 @@
   cursor: pointer;
   font: 700 1.4rem Archivo;
   color: var(--color-button-text);
+  text-decoration: none;
   background: var(--color-secundary);
 
   transition: 0.2s;
 }
 
-.teacher-item footer button:hover {
+.teacher-item footer a:hover {
   background-color: var(--color-secundary-dark);
 }
 
@@ -107,15 +108,15 @@
     margin-left: 1.6rem;
   }
 
-  .teacher-item footer button {
+  .teacher-item footer a {
     justify-content: center;
-    
+
     width: 24.5rem;
 
     font-size: 1.6rem;
   }
 
-  .teacher-item footer button img {
+  .teacher-item footer a img {
     margin-right: 1.6rem;
   }
 }
