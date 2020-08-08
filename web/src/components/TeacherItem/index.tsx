@@ -1,5 +1,8 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import './styles.css';
+
+// Services
+import api from '../../services/api';
 
 // Assets
 import whatsappIcon from '../../assets/images/icons/whatsapp.svg';
@@ -19,6 +22,11 @@ interface TeacherItemProps {
 }
 
 const TeacherItem: React.FC<TeacherItemProps> = ({teacher}) => {
+  // Functions
+  const handleNewConnection = useCallback(() => {
+    api.post('/connections', { user_id: teacher.id });
+  }, []);
+
   return (
     <article className="teacher-item">
       <header>
@@ -42,10 +50,10 @@ const TeacherItem: React.FC<TeacherItemProps> = ({teacher}) => {
           Preço/hora
           <strong>{teacher.cost}</strong>
         </p>
-        <button type="button">
+        <a href={`https://wa.me/${teacher.whatsapp}`} target="_black" onClick={handleNewConnection}>
           <img src={whatsappIcon} alt="WhatsApp" />
           Chamar
-        </button>
+        </a>
       </footer>
     </article>
   );
