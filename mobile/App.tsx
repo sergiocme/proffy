@@ -3,8 +3,8 @@ import React from 'react';
 import { AppLoading } from 'expo';
 import { useFonts } from 'expo-font';
 
-// Components
-import Landing from './src/pages/Landing';
+// Routers
+import StackRouter from './src/routers/StackRouter';
 
 // Assets
 import { Archivo_400Regular, Archivo_700Bold } from '@expo-google-fonts/archivo';
@@ -23,7 +23,7 @@ function App() {
       { loadedFonts ?
         <>
           <StatusBar style="light" />
-          <Landing />
+          <StackRouter />
         </> :
         <AppLoading />
       }
