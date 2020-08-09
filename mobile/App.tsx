@@ -22,7 +22,7 @@ function App() {
     <>
       { loadedFonts ?
         <>
-          <StatusBar style="auto" />
+          <StatusBar style="light" />
           <Landing />
         </> :
         <AppLoading />
