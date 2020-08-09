@@ -14,7 +14,11 @@ function Landing() {
   const { navigate } = useNavigation();
 
   // Functions
-  const handleNavigateTeach = useCallback(() => {
+  const handleNavigateToStudy = useCallback(() => {
+    navigate('TeacherList');
+  }, [navigate]);
+
+  const handleNavigateToTeach = useCallback(() => {
     navigate('Teach');
   }, [navigate]);
 
@@ -30,14 +34,17 @@ function Landing() {
       </Text>
 
       <View style={styles.buttonsContainer}>
-        <RectButton style={[styles.button, styles.primaryButton]}>
+        <RectButton
+          onPress={handleNavigateToStudy}
+          style={[styles.button, styles.primaryButton]}
+        >
           <Image source={studyIcon} />
           <Text style={styles.buttonText}>Estudar</Text>
         </RectButton>
 
         <RectButton
+          onPress={handleNavigateToTeach}
           style={[styles.button, styles.secondaryButton]}
-          onPress={handleNavigateTeach}
         >
           <Image source={giveClassesIcon} />
           <Text style={styles.buttonText}>Ensinar</Text>
