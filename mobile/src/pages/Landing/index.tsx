@@ -1,6 +1,7 @@
 import React, { useCallback } from 'react';
-import { View, Image, Text, TouchableOpacity } from 'react-native';
+import { View, Image, Text } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { RectButton } from 'react-native-gesture-handler';
 import styles from './styles';
 
 // Assets
@@ -29,18 +30,18 @@ function Landing() {
       </Text>
 
       <View style={styles.buttonsContainer}>
-        <TouchableOpacity style={[styles.button, styles.primaryButton]}>
+        <RectButton style={[styles.button, styles.primaryButton]}>
           <Image source={studyIcon} />
           <Text style={styles.buttonText}>Estudar</Text>
-        </TouchableOpacity>
+        </RectButton>
 
-        <TouchableOpacity
+        <RectButton
           style={[styles.button, styles.secondaryButton]}
           onPress={handleNavigateTeach}
         >
           <Image source={giveClassesIcon} />
           <Text style={styles.buttonText}>Ensinar</Text>
-        </TouchableOpacity>
+        </RectButton>
       </View>
 
       <Text style={styles.totalConnections}>
