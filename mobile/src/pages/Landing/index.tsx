@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { View, Image, Text, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import styles from './styles';
 
 // Assets
@@ -9,6 +10,13 @@ import giveClassesIcon from '../../assets/images/icons/give-classes.png';
 import heartIcon from '../../assets/images/icons/heart.png';
 
 function Landing() {
+  const { navigate } = useNavigation();
+
+  // Functions
+  const handleNavigateTeach = useCallback(() => {
+    navigate('Teach');
+  }, [navigate]);
+
   return (
     <View style={styles.container}>
       <Image source={landingImg} style={styles.banner} />
@@ -26,7 +34,10 @@ function Landing() {
           <Text style={styles.buttonText}>Estudar</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={[styles.button, styles.secondaryButton]}>
+        <TouchableOpacity
+          style={[styles.button, styles.secondaryButton]}
+          onPress={handleNavigateTeach}
+        >
           <Image source={giveClassesIcon} />
           <Text style={styles.buttonText}>Ensinar</Text>
         </TouchableOpacity>
