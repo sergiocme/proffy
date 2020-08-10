@@ -2,9 +2,14 @@ import React from 'react';
 import { View } from 'react-native';
 import styles from './styles';
 
+// Components
+import PageHeader from '../../components/PageHeader';
+
 function Favorites() {
   return (
-    <View />
+    <View style={styles.container}>
+      <PageHeader title="Meus proffys favoritos" />
+    </View>
   );
 }
 
