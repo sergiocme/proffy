@@ -23,7 +23,7 @@ function Landing() {
   useEffect(() => {
     api.get('/connections')
       .then(({data}) => setTotalConnections(data.total_connections));
-  }, [api]);
+  }, []);
 
   // Functions
   const handleNavigateToStudy = useCallback(() => {
