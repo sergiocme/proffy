@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
   },
 
   searchForm: {
-    marginBottom: 8,
+    marginBottom: 24,
   },
 
   label: {
@@ -36,7 +36,22 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     borderRadius: 8,
     backgroundColor: '#fff',
-  }
+  },
+
+  searchButton: {
+    flexDirection: 'row',
+    height: 56,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 8,
+    backgroundColor: '#04d361',
+  },
+
+  searchButtonText: {
+    fontFamily: 'Archivo_700Bold',
+    fontSize: 16,
+    color: '#fff',
+  },
 });
 
 export default styles;
