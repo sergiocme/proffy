@@ -4,6 +4,9 @@ import AsyncStorage from '@react-native-community/async-storage';
 import { RectButton } from 'react-native-gesture-handler';
 import styles from './styles';
 
+// Services
+import api from '../../services/api';
+
 // Assets
 import heartOutlineIcon from '../../assets/images/icons/heart-outline.png';
 import unfavoriteIcon from '../../assets/images/icons/unfavorite.png';
@@ -30,6 +33,8 @@ const TeacherItem: React.FC<TeacherItemProps> = ({teacher, favorite}) => {
 
   // Functions
   const handleWhatsappCall = useCallback(() => {
+    api.post('/connections', { user_id: teacher.id });
+
     Linking.openURL(`whatsapp://send?phone=${teacher.whatsapp}`);
   }, [Linking]);
 
