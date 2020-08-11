@@ -1,5 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import { View, ScrollView, Text, TextInput } from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
 import { BorderlessButton, RectButton } from 'react-native-gesture-handler';
 import { Feather } from '@expo/vector-icons';
 import styles from './styles';
@@ -30,20 +31,41 @@ function TeacherList() {
   const [time, setTime] = useState('');
 
   const [teachers, setTeachers] = useState<Teacher[]>([]);
+  const [favoriteTeachers, setFavoriteTeachers] = useState<number[]>([]);
 
   // Functions
-  const handleSearchTeachers = useCallback(() => {
-    api.get('/leassons', {
+  const loadFavorites = useCallback(async () => {
+    let favoriredTeacherList = [];
+    const getedItem = await AsyncStorage.getItem('favorites');
+    getedItem ? favoriredTeacherList = JSON.parse(getedItem) : null;
+
+    if (favoriredTeacherList.length > 0) {
+      setFavoriteTeachers(favoriredTeacherList.map((eachTeach: Teacher) => eachTeach.id));
+    }
+  }, [AsyncStorage, setFavoriteTeachers]);
+
+  const handleSearchTeachers = useCallback(async () => {
+    const { data } = await api.get('/leassons', {
       params: {
         subject,
         week_day: weekDay,
         time,
       },
-    }).then(({data}) => {
-      setFiltersVisibility(false);
-      setTeachers(data);
     });
-  }, [subject, weekDay, time]);
+
+    await loadFavorites();
+    setFiltersVisibility(false);
+    setTeachers(data);
+  }, [
+    api,
+    subject,
+    weekDay,
+    time,
+    setFiltersVisibility,
+    setFavoriteTeachers,
+    loadFavorites,
+    favoriteTeachers,
+  ]);
 
   return (
     <View style={styles.container}>
@@ -104,7 +126,9 @@ function TeacherList() {
           paddingBottom: 16,
         }}
       >
-        {teachers.map((teacher) => <TeacherItem key={teacher.id} teacher={teacher} />)}
+        {teachers.length > 0 && teachers.map((teacher) => {
+          return <TeacherItem key={teacher.id} teacher={teacher} favorite={favoriteTeachers.includes(teacher.id)} />
+        })}
       </ScrollView>
     </View>
   );
