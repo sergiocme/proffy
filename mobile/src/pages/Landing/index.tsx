@@ -1,8 +1,11 @@
-import React, { useCallback } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { View, Image, Text } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { RectButton } from 'react-native-gesture-handler';
 import styles from './styles';
+
+// Services
+import api from '../../services/api';
 
 // Assets
 import landingImg from '../../assets/images/landing.png';
@@ -12,6 +15,15 @@ import heartIcon from '../../assets/images/icons/heart.png';
 
 function Landing() {
   const { navigate } = useNavigation();
+
+  // State
+  const [totalConnections, setTotalConnections] = useState(0);
+
+  // Effects
+  useEffect(() => {
+    api.get('/connections')
+      .then(({data}) => setTotalConnections(data.total_connections));
+  }, []);
 
   // Functions
   const handleNavigateToStudy = useCallback(() => {
@@ -52,7 +64,7 @@ function Landing() {
       </View>
 
       <Text style={styles.totalConnections}>
-        Total de 285 conexões já realizadas <Image source={heartIcon} />.
+        Total de {totalConnections} conexões já realizadas <Image source={heartIcon} />.
       </Text>
     </View>
   );

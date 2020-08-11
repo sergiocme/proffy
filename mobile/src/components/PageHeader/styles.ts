@@ -12,6 +12,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
 
+  header: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+
   title: {
     maxWidth: 160,
     marginVertical: 40,
