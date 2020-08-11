@@ -1,5 +1,5 @@
-import React from 'react';
-import { View, Image, Text } from 'react-native';
+import React, { useCallback } from 'react';
+import { View, Image, Text, Linking } from 'react-native';
 import { RectButton } from 'react-native-gesture-handler';
 import styles from './styles';
 
@@ -23,6 +23,11 @@ interface TeacherItemProps {
 }
 
 const TeacherItem: React.FC<TeacherItemProps> = ({teacher}) => {
+  // Functions
+  const handleWhatsappCall = useCallback(() => {
+    Linking.openURL(`whatsapp://send?phone=${teacher.whatsapp}`);
+  }, [Linking]);
+
   return (
     <View style={styles.container}>
       <View style={styles.profile}>
@@ -52,7 +57,7 @@ const TeacherItem: React.FC<TeacherItemProps> = ({teacher}) => {
             <Image source={heartOutlineIcon} />
           </RectButton>
 
-          <RectButton style={styles.contactButton}>
+          <RectButton onPress={handleWhatsappCall} style={styles.contactButton}>
             <Image source={whatsappIcon} />
             <Text style={styles.contactButtonText}>Chamar</Text>
           </RectButton>
