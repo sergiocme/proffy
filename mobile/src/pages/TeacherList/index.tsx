@@ -40,6 +40,7 @@ function TeacherList() {
         time,
       },
     }).then(({data}) => {
+      setFiltersVisibility(false);
       setTeachers(data);
     });
   }, [subject, weekDay, time]);
