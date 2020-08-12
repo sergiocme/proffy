@@ -46,11 +46,33 @@ yarn start
   yarn install
   ```
 
-### 2. Execução
+#### 2. Execução
 
 ```
 yarn start
 ```
+
+### Executando App (mobile)
+
+#### 1. Primeira execução
+
+* Instalando dependências
+
+  ```
+  yarn install
+  ```
+
+#### 2. Execução
+
+```
+yarn start
+```
+
+#### 3. Abrindo App através do Expo
+
+##### a.1. - Instale o App Expo pela sua loja de aplicativos do [Android](https://play.google.com/store/apps/details?id=host.exp.exponent&hl=en) ou [iOS](https://apps.apple.com/br/app/expo-client/id982107779)
+
+##### a.2. - Abra o App Expo e leia o QrCode na tela do terminal ou browser
 
 ---
 
