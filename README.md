@@ -8,6 +8,34 @@ Proffy é uma plataforma que conecta alunos e instrutores das mais diversas mat�
 
 Desenvolvida durante a 2º edição [NextLevelWeek](https://nextlevelweek.com/) da [Rocketseat](https://rocketseat.com.br/) 💜.
 
+## Executando Plataforma
+
+```
+git clone git@github.com:sergiocme/proffy.git
+```
+
+### Rodando Servidor (server)
+
+#### 1. Primeira execução
+
+* Instalando dependências
+
+  ```
+  yarn install
+  ```
+
+* Executando migrações
+
+  ```
+  yarn knex:migrate
+  ```
+
+#### 2. Execução
+
+```
+yarn start
+```
+
 ---
 
 ```
