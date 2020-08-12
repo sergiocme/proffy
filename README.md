@@ -14,7 +14,7 @@ Desenvolvida durante a 2º edição [NextLevelWeek](https://nextlevelweek.com/) 
 git clone git@github.com:sergiocme/proffy.git
 ```
 
-### Rodando Servidor (server)
+### Executando Servidor API (server)
 
 #### 1. Primeira execução
 
@@ -31,6 +31,22 @@ git clone git@github.com:sergiocme/proffy.git
   ```
 
 #### 2. Execução
+
+```
+yarn start
+```
+
+### Executando Aplicação Web (web)
+
+#### 1. Primeira execução
+
+* Instalando dependências
+
+  ```
+  yarn install
+  ```
+
+### 2. Execução
 
 ```
 yarn start
